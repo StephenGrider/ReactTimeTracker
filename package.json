@@ -13,7 +13,6 @@
   "browserify": {
     "transform": [
       "browserify-shim",
-      "coffeeify",
       "hbsfy",
       "cjsxify"
     ]
