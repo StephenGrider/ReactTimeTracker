@@ -1,4 +1,4 @@
-View =  require './view'
+View =  require './views/comment-box'
 React = require 'react'
 
 React.render(
