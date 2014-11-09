@@ -1,2 +1,6 @@
 View =  require './view'
-view = new View(el: '#content')
+ 
+React.render(
+  <View />,
+  document.getElementById('content')
+);
