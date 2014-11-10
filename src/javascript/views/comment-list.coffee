@@ -34,11 +34,13 @@
 
 React = require 'react'
 Comment = require './comment'
+BackboneReactComponent = require 'backbone-react-component'
 
 module.exports = React.createClass
+  mixins: [BackboneReactComponent]
   render: ->
-    commentNodes = this.props.commentsCollection.map (comment) ->
-      <Comment author={comment.author} text={comment.text} />
+    commentNodes = @getCollection().map (comment) ->
+      <Comment author={comment.get 'author'} text={comment.get 'text'} />
 
     <div className="commentList">
       {commentNodes}

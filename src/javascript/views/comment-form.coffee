@@ -1,12 +1,14 @@
 React = require 'react'
+BackboneReactComponent = require 'backbone-react-component'
 
 module.exports = React.createClass
+  mixins: [BackboneReactComponent]
   render: ->
-    <div className="commentForm" onSubmit={this.onSubmit}>
+    <form className="commentForm" onSubmit={@onSubmit}>
       <input type="text" placeholder="Name" ref="author" />
       <input type="text" placeholder="Comment" ref="text" />
       <input type="submit" value="Post" />
-    </div>
+    </form>
 
   onSubmit: (e) ->
     e.preventDefault()
@@ -19,4 +21,4 @@ module.exports = React.createClass
     @refs.author.getDOMNode.value = ''
     @refs.text.getDOMNode.value = ''
 
-    @state.commentsCollection.push author: author, text: text
+    @getCollection().add author: author, text: text
