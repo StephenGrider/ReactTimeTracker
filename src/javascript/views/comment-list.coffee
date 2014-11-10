@@ -37,7 +37,9 @@ Comment = require './comment'
 
 module.exports = React.createClass
   render: ->
-    <div className="commentBox">
-      <Comment author="Jim">This is a comment</Comment>
-      <Comment author="Jane">This is also a comment</Comment>
+    commentNodes = this.props.data.map (comment) ->
+      <Comment author={comment.author} text={comment.text} />
+
+    <div className="commentList">
+      {commentNodes}
     </div>

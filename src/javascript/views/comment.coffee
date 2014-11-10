@@ -6,5 +6,5 @@ module.exports = React.createClass
       <h2 className="author">
         {this.props.author}
       </h2>
-      {this.props.children}
+      {this.props.text}
     </div>

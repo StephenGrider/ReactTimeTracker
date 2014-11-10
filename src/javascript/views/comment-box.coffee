@@ -5,6 +5,7 @@ CommentList = require './comment-list'
 module.exports = React.createClass
   render: ->
     <div className="commentBox">
+      <h1>Comments</h1>
       <CommentForm />
-      <CommentList />
+      <CommentList data={this.props.data}/>
     </div>
