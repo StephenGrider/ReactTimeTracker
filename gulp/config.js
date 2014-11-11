@@ -37,6 +37,6 @@ module.exports = {
       entries: src + '/javascript/app.coffee',
       dest: dest,
       outputName: 'app.js'
-    }
+    }]
   }
 };
