@@ -9,4 +9,4 @@ window.c = commentsCollection
 React.render(
   <View collection={commentsCollection}/>,
   document.getElementById('content')
-);
+)
