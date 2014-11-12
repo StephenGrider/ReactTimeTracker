@@ -50,6 +50,7 @@
     "backbone": "~1.1.2",
     "backbone-react-component": "^0.7.2",
     "jquery": "~2.1.0",
-    "react": "^0.12.0"
+    "react": "^0.12.0",
+    "react-widgets": "^2.0.1"
   }
 }
