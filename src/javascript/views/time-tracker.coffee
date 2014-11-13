@@ -6,7 +6,7 @@ BackboneReactComponent = require 'backbone-react-component'
 module.exports = React.createClass
   mixins: [BackboneReactComponent]
   render: ->
-    <div className="time-tracker">
+    <div className="tracker">
       <h1>Track Time</h1>
       <TimeSetup />
       <TimeAdd />

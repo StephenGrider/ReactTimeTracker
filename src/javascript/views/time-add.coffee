@@ -5,11 +5,10 @@ DatePicker = require('react-widgets').DateTimePicker
 module.exports = React.createClass
   mixins: [BackboneReactComponent]
   render: ->
-    <div>
+    <div className="add">
       <h2>Use the Timer</h2>
       <div>timer</div>
       <h2>Or add time manually</h2>
-      <input type="text" placeholder="duration" />
       <DatePicker
         className="datepicker"
         time=false
@@ -17,5 +16,6 @@ module.exports = React.createClass
         duration=0
       />
 
+      <input type="text" placeholder="duration" />
       <button>Save</button>
     </div>
