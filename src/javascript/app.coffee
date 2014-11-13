@@ -1,10 +1,12 @@
 View =  require './views/time-tracker'
 React = require 'react'
 Backbone = require 'backbone'
+TimeEntry = require './models/time-entry'
 
-commentsCollection = new Backbone.Collection()
+
+timeEntry = new TimeEntry()
 
 React.render(
-  <View collection={commentsCollection}/>,
+  <View model={timeEntry}/>,
   document.getElementById('content')
 )
