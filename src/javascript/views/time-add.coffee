@@ -1,6 +1,7 @@
 React = require 'react'
 BackboneReactComponent = require 'backbone-react-component'
 DatePicker = require('react-widgets').DateTimePicker
+TimeInput = require './components/time-input'
 Timer = require './components/timer'
 
 module.exports = React.createClass
@@ -17,6 +18,6 @@ module.exports = React.createClass
         duration=0
       />
 
-      <input type="text" placeholder="duration" />
+      <TimeInput />
       <button>Save</button>
     </div>
