@@ -6,11 +6,12 @@ LocalStorageAdapter = require './mixins/local-storage'
 TimeEntry = require '../models/time-entry'
 
 module.exports = React.createClass
-  mixins: [BackboneReactComponent, ]
+  mixins: [BackboneReactComponent, LocalStorageAdapter]
   
   componentWillMount: ->
-    attrs = LocalStorageAdaptor.get('time')
-    @timeEntry = new TimeEntry attrs
+    savedAttrs = @getFromStorage('time')
+    @timeEntry = new TimeEntry savedAttrs
+    @timeEntry.set('notes', 'asdf')
     
   render: ->
     <div className="tracker">

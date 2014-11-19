@@ -8,7 +8,7 @@ module.exports = React.createClass
       ref="input"
       placeholder="Time (1h 30m)"
       value={@state.duration}
-      onChange={@handleInputBlur}
+      onChange={@handleInputChange}
     />
 
   getInitialState: ->
@@ -17,6 +17,6 @@ module.exports = React.createClass
   componentDidMount: ->
     @refs.input.getDOMNode().value = ''
 
-  handleInputBlur: ->
+  handleInputChange: ->
     node = @refs.input.getDOMNode()
     @setState(duration: @formatTime(node.value))

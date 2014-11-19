@@ -1,9 +1,9 @@
 prefix = 'time'
   
 module.exports = 
-  get: (key) ->
+  getFromStorage: (key) ->
     JSON.parse(localStorage.getItem("#{prefix}:#{key}"))
-  set: (key, item) ->
+  setToStorage: (key, item) ->
     localStorage.setItem("#{prefix}:#{key}", JSON.stringify(item))
   setPrefix: (string) ->
     prefix = string
