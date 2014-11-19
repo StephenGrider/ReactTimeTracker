@@ -1,4 +1,3 @@
-
 module.exports =
   formatTime: (time) ->
     time = time.replace(/[^0-9|h|m]/gi, '')

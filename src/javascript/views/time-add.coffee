@@ -19,5 +19,9 @@ module.exports = React.createClass
       />
 
       <TimeInput />
-      <button>Save</button>
+      <button onClick={@handleSaveClick}>Save</button>
     </div>
+    
+  handleSaveClick: ->
+    @getModel().save()
+    
