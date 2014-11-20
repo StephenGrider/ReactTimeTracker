@@ -4,11 +4,11 @@ TimeAdd = require './time-add'
 BackboneReactComponent = require 'backbone-react-component'
 Backbone = require 'backbone'
 TimeEntry = require '../models/time-entry'
-TimeIndex = require './time-index'
+TimeIndex = require './index/time-index'
 
 module.exports = React.createClass
   mixins: [BackboneReactComponent]
-  
+
   componentWillMount: ->
     @timeEntry = new TimeEntry
     @timeEntry.on 'change', => @forceUpdate()
@@ -18,5 +18,5 @@ module.exports = React.createClass
       <h1>Track Time</h1>
       <TimeSetup model={@timeEntry} />
       <TimeAdd model={@timeEntry} />
-      <TimeIndex collection={@timeIndex} />
+      <TimeIndex collection={@getCollection()} />
     </div>
