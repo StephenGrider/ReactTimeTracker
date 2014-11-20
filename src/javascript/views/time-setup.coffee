@@ -3,6 +3,9 @@ BackboneReactComponent = require 'backbone-react-component'
 
 module.exports = React.createClass
   mixins: [BackboneReactComponent]
+  
+  componentWillMount: ->
+    @getModel().on 'clear', @forceUpdate
     
   render: ->
     <div className="setup">
@@ -19,7 +22,7 @@ module.exports = React.createClass
 
       <div className="billable">
         <span>Billable?</span>
-        <input 
+        <input
           checked={@props.billable}
           type="checkbox" 
           onChange={@onBillableChange} 
@@ -28,7 +31,12 @@ module.exports = React.createClass
 
       <div className="rate">
         <span className="prefix">$</span>
-        <input ref="rate" type="text" placeholder="Rate" onBlur={@onRateBlur} />
+        <input
+          value={@props.rate}
+          type="text" 
+          placeholder="Rate" 
+          onBlur={@onRateBlur} 
+        />
       </div>
     </div>
     
@@ -41,5 +49,3 @@ module.exports = React.createClass
   onRateBlur: (e) ->
     e.target.value = val = parseFloat e.target.value.replace(/[^0-9^.]/gi, '') || 0
     @getModel().set('rate', val)
-    
-    

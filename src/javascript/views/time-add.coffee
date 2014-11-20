@@ -3,9 +3,10 @@ BackboneReactComponent = require 'backbone-react-component'
 DatePicker = require('react-widgets').DateTimePicker
 TimeInput = require './components/time-input'
 Timer = require './components/timer'
+LocalStorageAdapter = require './mixins/local-storage'
 
 module.exports = React.createClass
-  mixins: [BackboneReactComponent]
+  mixins: [BackboneReactComponent, LocalStorageAdapter]
   render: ->
     <div className="add">
       <h2>Use the Timer</h2>
@@ -20,8 +21,18 @@ module.exports = React.createClass
 
       <TimeInput />
       <button onClick={@handleSaveClick}>Save</button>
+      <button onClick={@handleResetClick}>Reset</button>
     </div>
     
   handleSaveClick: ->
-    @getModel().save()
+    collection = @getCollection()
+    collection.add(@getModel())
+    @getModel().clear()
+    @getModel().trigger 'clear'
+    @setToStorage 'time', collection.toJSON()
     
+    window.alert 'Time Successfully Logged'
+    
+  handleResetClick: ->
+    @getModel().clear()
+    @getModel().trigger 'clear'
