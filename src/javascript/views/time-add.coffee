@@ -28,11 +28,9 @@ module.exports = React.createClass
     collection = @getCollection()
     collection.add(@getModel())
     @getModel().clear()
-    @getModel().trigger 'clear'
     @setToStorage 'time', collection.toJSON()
     
     window.alert 'Time Successfully Logged'
     
   handleResetClick: ->
     @getModel().clear()
-    @getModel().trigger 'clear'

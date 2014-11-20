@@ -11,6 +11,7 @@ module.exports = React.createClass
   
   componentWillMount: ->
     @timeEntry = new TimeEntry
+    @timeEntry.on 'change', => @forceUpdate()
     
   render: ->
     <div className="tracker">

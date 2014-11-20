@@ -3,9 +3,6 @@ BackboneReactComponent = require 'backbone-react-component'
 
 module.exports = React.createClass
   mixins: [BackboneReactComponent]
-  
-  componentWillMount: ->
-    @getModel().on 'clear', @forceUpdate
     
   render: ->
     <div className="setup">
