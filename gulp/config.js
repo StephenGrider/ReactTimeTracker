@@ -28,9 +28,9 @@ module.exports = {
   },
   browserify: {
     // Enable source maps
-    debug: true,
+    debug: false,
     // Additional file extentions to make optional
-    extensions: ['.coffee', '.hbs', '.cjsx'],
+    extensions: ['.coffee', '.hbs', '.cjsx', '.js'],
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
