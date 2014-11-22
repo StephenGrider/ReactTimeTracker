@@ -1,14 +1,17 @@
 React = require 'react'
 BackboneReactComponent = require 'backbone-react-component'
+Tokenizer = require('react-typeahead').Tokenizer
 
 module.exports = React.createClass
   mixins: [BackboneReactComponent]
     
   render: ->
+    
     <div className="setup">
       <h2>What do you want to track?</h2>
       
-      <input type="text" className="autocompleter" placeholder="autocompleter" />
+      <Tokenizer />
+      
       <input 
         value={@props.notes}
         type="text" 
@@ -20,7 +23,7 @@ module.exports = React.createClass
       <div className="billable">
         <span>Billable?</span>
         <input
-          checked={@props.billable}
+          
           type="checkbox" 
           onChange={@onBillableChange} 
         />
@@ -32,7 +35,7 @@ module.exports = React.createClass
           value={@props.rate}
           type="text" 
           placeholder="Rate" 
-          onBlur={@onRateBlur} 
+          onChange={@onRateBlur} 
         />
       </div>
     </div>
@@ -41,8 +44,8 @@ module.exports = React.createClass
     @getModel().set('notes', e.target.value)
     
   onBillableChange: (e) ->
-    if e.target.value then @getModel().set('billable', true)  else @getModel().set('billable', false) 
+    if e.target.checked then @getModel().set('billable', true)  else @getModel().set('billable', false) 
     
   onRateBlur: (e) ->
-    e.target.value = val = parseFloat e.target.value.replace(/[^0-9^.]/gi, '') || 0
+    val = e.target.value.replace(/[^\d.-]/g, '') || 0
     @getModel().set('rate', val)

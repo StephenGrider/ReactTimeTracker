@@ -4,10 +4,12 @@ TimeFormatter = require './../mixins/time-formatter'
 module.exports = React.createClass
   mixins: [TimeFormatter]
   render: ->
+    if @state.duration == 0 then duration = null else @state.duration
+    
     <input
       ref="input"
       placeholder="Time (1h 30m)"
-      value={@state.duration}
+      value={duration}
       onChange={@handleInputChange}
     />
 
