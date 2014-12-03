@@ -3,11 +3,11 @@ React = require 'react'
 module.exports = React.createClass
   render: ->
     <div>
-      <div>{@state.elapsed?.toFixed(1)}</div>
-      <button onClick={@handleTimerClick}>
+      <h4>{@state.elapsed?.toFixed(1)}</h4>
+      <button onClick={@handleTimerClick} className="btn btn-default">
         {if @state.paused then 'Start' else 'Stop'}
       </button>
-      <button onClick={@handleResetClick}>
+      <button onClick={@handleResetClick} className="btn btn-default">
         Clear
       </button>
     </div>

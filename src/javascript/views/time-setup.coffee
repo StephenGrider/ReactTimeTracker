@@ -20,7 +20,7 @@ module.exports = React.createClass
         <div className="col-md-4">
           <input
             value={@props.notes}
-            type="text" 
+            type="text"
             className="notes"
             placeholder="Additional notes (optional)"
             onChange={@onNotesChange}
@@ -28,11 +28,11 @@ module.exports = React.createClass
         </div>
 
         <div className="col-md-3">
-          <span>Billable?</span>
           <input
             type="checkbox" 
             onChange={@onBillableChange} 
           />
+          <span>Billable?</span>
         </div>
 
         <div className="col-md-4">
@@ -40,7 +40,7 @@ module.exports = React.createClass
             value={@props.rate}
             type="text" 
             placeholder="Rate ($)" 
-            onChange={@onRateBlur} 
+            onChange={@onRateChange} 
           />
         </div>
       </div>
@@ -52,7 +52,7 @@ module.exports = React.createClass
   onBillableChange: (e) ->
     if e.target.checked then @getModel().set('billable', true)  else @getModel().set('billable', false) 
     
-  onRateBlur: (e) ->
+  onRateChange: (e) ->
     val = e.target.value.replace(/[^\d.-]/g, '') || 0
     @getModel().set('rate', val)
 

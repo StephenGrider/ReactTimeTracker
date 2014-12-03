@@ -14,17 +14,24 @@ module.exports = React.createClass
       <Timer />
       <h3>Or add time manually</h3>
       <h5>Select a date:</h5>
-      <DatePicker
-        className="datepicker"
-        time=false
-        format='MMM dd yyyy'
-        duration=0
-        onChange={@onDateChange}
-      />
-
-      <TimeInput />
-      <button onClick={@handleSaveClick}>Save</button>
-      <button onClick={@handleResetClick}>Reset</button>
+      
+      <div className="row">
+        <div className="col-md-6">
+          <DatePicker
+            className="datepicker"
+            time=false
+            format='MMM dd yyyy'
+            duration=0
+            onChange={@onDateChange}
+          />
+        </div>
+        
+        <div className="col-md-6">
+          <TimeInput />
+        </div>
+      </div>
+      <br />
+      <button onClick={@handleSaveClick} className="btn btn-primary">Save</button>
     </div>
     
   handleSaveClick: ->
@@ -33,9 +40,6 @@ module.exports = React.createClass
     @setToStorage 'time', collection.toJSON()
     
     window.alert 'Time Successfully Logged'
-    
-  handleResetClick: ->
-    @getModel().clear()
 
   onDateChange: (date) ->
     if date
