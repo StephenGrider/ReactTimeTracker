@@ -28,7 +28,7 @@ module.exports = React.createClass
     </div>
     
   handleSaveClick: ->
-    collection = @getCollection()
+    collection = @getCollection().timeEntries
     collection.add(@getModel())
     @getModel().clear()
     @setToStorage 'time', collection.toJSON()

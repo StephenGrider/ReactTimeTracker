@@ -1,16 +1,20 @@
 React = require 'react'
 BackboneReactComponent = require 'backbone-react-component'
-Tokenizer = require('react-typeahead').Tokenizer
+Select = require 'react-select'
 
 module.exports = React.createClass
   mixins: [BackboneReactComponent]
-    
+  
   render: ->
+    selectOptions = @getCollection().workspaces.map((w) -> value: w.cid, label: w.get('title'))
     
     <div className="setup">
       <h2>What do you want to track?</h2>
       
-      <Tokenizer />
+      <Select
+        options={selectOptions}
+        onChange={@onSelectChange}
+      />
       
       <input 
         value={@props.notes}
@@ -23,7 +27,6 @@ module.exports = React.createClass
       <div className="billable">
         <span>Billable?</span>
         <input
-          
           type="checkbox" 
           onChange={@onBillableChange} 
         />
@@ -49,3 +52,8 @@ module.exports = React.createClass
   onRateBlur: (e) ->
     val = e.target.value.replace(/[^\d.-]/g, '') || 0
     @getModel().set('rate', val)
+
+  onSelectChange: (cid) ->
+    @getModel().set('workspace_cid', cid)
+    
+    
