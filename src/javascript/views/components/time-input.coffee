@@ -1,8 +1,9 @@
 React = require 'react'
 TimeFormatter = require './../mixins/time-formatter'
+BackboneReactComponent = require 'backbone-react-component'
 
 module.exports = React.createClass
-  mixins: [TimeFormatter]
+  mixins: [TimeFormatter, BackboneReactComponent]
   render: ->
     if @state.duration == 0 then duration = null else @state.duration
     
@@ -22,3 +23,4 @@ module.exports = React.createClass
   handleInputChange: ->
     node = @refs.input.getDOMNode()
     @setState(duration: @formatTime(node.value))
+    @getModel().set('duration', @formatTime(node.value))
