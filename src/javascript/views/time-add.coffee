@@ -9,10 +9,10 @@ module.exports = React.createClass
   mixins: [BackboneReactComponent, LocalStorageAdapter]
   
   render: ->
-    <div className="add">
-      <h2>Use the Timer</h2>
+    <div className="add col-md-6">
+      <h3>Use the Timer</h3>
       <Timer />
-      <h2>Or add time manually</h2>
+      <h3>Or add time manually</h3>
       <h5>Select a date:</h5>
       <DatePicker
         className="datepicker"
@@ -30,7 +30,6 @@ module.exports = React.createClass
   handleSaveClick: ->
     collection = @getCollection().timeEntries
     collection.add(@getModel())
-    @getModel().clear()
     @setToStorage 'time', collection.toJSON()
     
     window.alert 'Time Successfully Logged'

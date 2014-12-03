@@ -8,38 +8,41 @@ module.exports = React.createClass
   render: ->
     selectOptions = @getCollection().workspaces.map((w) -> value: w.cid, label: w.get('title'))
     
-    <div className="setup">
-      <h2>What do you want to track?</h2>
+    <div className="setup col-md-6 row">
+      <h3>What do you want to track?</h3>
       
       <Select
         options={selectOptions}
         onChange={@onSelectChange}
       />
-      
-      <input 
-        value={@props.notes}
-        type="text" 
-        className="notes"
-        placeholder="Additional notes (optional)"
-        onChange={@onNotesChange}
-      />
+      <br />
+      <div className="row">
+        <div className="col-md-4">
+          <input
+            value={@props.notes}
+            type="text" 
+            className="notes"
+            placeholder="Additional notes (optional)"
+            onChange={@onNotesChange}
+          />
+        </div>
 
-      <div className="billable">
-        <span>Billable?</span>
-        <input
-          type="checkbox" 
-          onChange={@onBillableChange} 
-        />
-      </div>
+        <div className="col-md-3">
+          <span>Billable?</span>
+          <input
+            type="checkbox" 
+            onChange={@onBillableChange} 
+          />
+        </div>
 
-      <div className="rate">
-        <span className="prefix">$</span>
-        <input
-          value={@props.rate}
-          type="text" 
-          placeholder="Rate" 
-          onChange={@onRateBlur} 
-        />
+        <div className="col-md-4">
+          <input
+            value={@props.rate}
+            type="text" 
+            placeholder="Rate ($)" 
+            onChange={@onRateBlur} 
+          />
+        </div>
       </div>
     </div>
     
@@ -55,5 +58,3 @@ module.exports = React.createClass
 
   onSelectChange: (cid) ->
     @getModel().set('workspace_cid', cid)
-    
-    

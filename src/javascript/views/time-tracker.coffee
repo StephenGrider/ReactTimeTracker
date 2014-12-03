@@ -10,13 +10,13 @@ module.exports = React.createClass
 
   componentWillMount: ->
     @timeEntry = new Backbone.Model()
-    window.a = @timeEntry
-    # @timeEntry.on 'change', => @forceUpdate()
     
   render: ->
-    <div className="tracker">
+    <div className="tracker container-fluid">
       <h1>Track Time</h1>
-      <TimeSetup model={@timeEntry} />
-      <TimeAdd model={@timeEntry} />
-      <TimeIndex collection={@getCollection().timeEntries} />
+      <div className="row">
+        <TimeSetup model={@timeEntry} />
+        <TimeAdd model={@timeEntry} />
+      </div>
+      <TimeIndex collection={@getCollection()} />
     </div>
